@@ -57,6 +57,18 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>s', group = '[S]earch' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+
+      { ';', builtin.find_files, desc = 'Toggle explorer' },
+
+      -- Rename the variable under your cursor.
+      --  Most Language Servers support renaming across files, etc.
+      {'<leader>lr', vim.lsp.buf.rename, desc = 'Rename symbol'},
+
+      -- Execute a code action, usually your cursor needs to be on top of an error
+      -- or a suggestion from your LSP for this to activate.
+      { '<leader>la', vim.lsp.buf.code_action, desc  ='Goto Code Action'},
+
+      { 'gl', function() vim.diagnostic.open_float(0, { scope = "line" }) end, desc = 'Show inline diagnostic' },
     },
   },
 }
